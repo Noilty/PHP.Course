@@ -14,53 +14,12 @@ unset($a, $b);
 // 1 <<<
 echo '<hr />';
 // 2 >>>
-$a = rand(1, 15);
+$a = rand(0, 15);
 switch ($a) {
-    case 1:
-        echo 1;
-        break;
-    case 2:
-        echo 2;
-        break;
-    case 3:
-        echo 3;
-        break;
-    case 4:
-        echo 4;
-        break;
-    case 5:
-        echo 5;
-        break;
-    case 6:
-        echo 6;
-        break;
-    case 7:
-        echo 7;
-        break;
-    case 8:
-        echo 8;
-        break;
-    case 9:
-        echo 9;
-        break;
-    case 10:
-        echo 10;
-        break;
-    case 11:
-        echo 11;
-        break;
-    case 12:
-        echo 12;
-        break;
-    case 13:
-        echo 13;
-        break;
-    case 14:
-        echo 14;
-        break;
-    case 15:
-        echo 15;
-        break;
+    case ($a < 15):
+        for ($i = $a; $i < 15; $i++) {
+            echo $i . '<br />';
+        }
 }
 // 2 <<<
 echo '<hr />';
@@ -150,12 +109,20 @@ echo '<hr />';
 // 7 >>>
 $hour = date('H');
 $minutes = date('i');
+
 $array = [
     "hour" => ["час", "часа", "часов"],
     "minutes" => ["минута", "минуты", "минут"]
 ];
+
 echo $hour . ' ' . getTime($hour, $array['hour']) . ' ' . $minutes . ' ' . getTime($minutes, $array['minutes']);
 
+/**
+ * Склонение слов по числам
+ * @param $number
+ * @param $array
+ * @return mixed
+ */
 function getTime($number, $array) {
     $keys = [2, 0, 1, 1, 1, 2];
     $mod = $number % 100;
