@@ -109,7 +109,7 @@ echo spaceForUnderscores('Рома Кузьмин');
  * Функция заменяет в строке пробелы на подчеркивания
  */
 function spaceForUnderscores($str) {
-    return str_replace(' ', '_', $str);
+    return str_replace(' ', '-', $str);
 }
 // 5 <<<
 echo '<hr />';
@@ -191,3 +191,17 @@ foreach ($arrRegions as $region => $cities) {
     echo "<br />";
 }
 // 8 <<<
+echo '<hr />';
+// 9 >>>
+$string = 'пыха для тех у кого лапки';
+echo $url = cnc($string, $alph); //pyha-dlâ-teh-u-kogo-lapki
+
+/**
+ * ЧПУ
+ * @param $string
+ * @return string|string[]
+ */
+function cnc($string, $alph) {
+    return spaceForUnderscores((transliteration($string, $alph)));
+}
+// 9 <<<
