@@ -14,3 +14,5 @@ require ROOT . '/config/main.php'; // Конфигурация
 require ROOT . '/engine/render.php'; // Генерация шаблонов
 require ROOT . '/engine/router.php'; // Маршрутизация
 require ROOT . '/engine/logger.php'; // Логирование
+require ROOT . '/engine/database.php'; // База данных
+require ROOT . '/engine/gallery.php'; // Галлерея

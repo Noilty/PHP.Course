@@ -5,13 +5,11 @@ require_once '../engine/core.php';
  * Все изображения
  */
 function routeIndex() {
-    global $config;
-    $images = scandir($config['app']['imagesPath']);
-
-    foreach ($images as $num => $img) {
-        if ($img == '.' || $img == '..') {
-            unset($images[$num]);
-        }
+    // order by view
+    $imagesSql = getItemArray('select name from gb.image');
+    $images = [];
+    foreach ($imagesSql as $item) {
+        $images[] = $item['name'];
     }
 
     echo render('gallery/all', ['images' => $images]);
@@ -21,14 +19,20 @@ function routeIndex() {
  * Одно изоброжение
  */
 function routeOne() {
-    global $config;
-    $filePath = $config['app']['imagesPath'] . '/' . $_GET['image'];
+    $image = getItem('select * from image where name="'.$_GET['image'].'"');
 
-    if (file_exists($filePath)) {
-        echo render('gallery/one', ['images' => $_GET['image']]);
+    if (!empty($image)) {
+        // Увеличить $image['view'] на +1 -> execute()
+
+        echo render('gallery/one', ['image' => $image]);
     } else {
         echo render('site/error');
     }
+}
+
+function routeFill() {
+    fillDataBase();
+    echo render('site/success');
 }
 
 /**

@@ -6,6 +6,8 @@ require_once '../engine/core.php';
  */
 function routeIndex() {
 //    systemLog('Подключаем логирование');
+//    $image = getItemArray('select * from gb.image order by id desc');
+//    var_dump($image);
     echo render('site/home');
 }
 

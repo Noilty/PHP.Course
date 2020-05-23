@@ -1,4 +1,5 @@
 <?php
+
 return [
     'app' => [
         'name' => 'GeekBrain PHP 1',
@@ -6,7 +7,7 @@ return [
         'logPath' => ROOT . '/data/logs',
         'templatesPath' => ROOT . '/templates',
         'imagesUrl' => '/images',
-        'imagesPath' => ROOT . '/public_html/images',
+        'imagesPath' => 'images',
 
         'assets' => [
             'css' => [
