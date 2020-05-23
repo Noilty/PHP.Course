@@ -17,7 +17,13 @@ $connection = mysqli_connect(
  */
 function getItem(string $sql) {
     global $connection;
+//    $sql = mysqli_real_escape_string($connection, $sql);
     $result = mysqli_query($connection, $sql);
+
+    if ($result === false) {
+        var_dump(mysqli_error($connection));
+        die();
+    }
 
     $row = mysqli_fetch_assoc($result);
     return $row;
@@ -33,6 +39,11 @@ function getItemArray(string $sql) {
     $result = mysqli_query($connection, $sql);
 
     $rows = [];
+
+    if ($result === false) {
+        var_dump(mysqli_error($connection));
+        die();
+    }
 
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
@@ -50,6 +61,11 @@ function execute(string $sql) {
     global $connection;
     $result = mysqli_query($connection, $sql);
 
+    if ($result === false) {
+        var_dump(mysqli_error($connection));
+        die();
+    }
+
     return $result;
 }
 
@@ -60,6 +76,11 @@ function execute(string $sql) {
 function lastInsertedId() {
     global $connection;
     $result = mysqli_insert_id($connection);
+
+    if ($result === false) {
+        var_dump(mysqli_error($connection));
+        die();
+    }
 
     return (int)$result;
 }
