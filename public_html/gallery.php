@@ -5,12 +5,8 @@ require_once '../engine/core.php';
  * Все изображения
  */
 function routeIndex() {
-    // order by view
-    $imagesSql = getItemArray('select name from gb.image');
-    $images = [];
-    foreach ($imagesSql as $item) {
-        $images[] = $item['name'];
-    }
+    fillDataBase();
+    $images = getItemArray('select name, view from gb.image order by view desc');
 
     echo render('gallery/all', ['images' => $images]);
 }
@@ -23,6 +19,9 @@ function routeOne() {
 
     if (!empty($image)) {
         // Увеличить $image['view'] на +1 -> execute()
+        $view = $image['view'];
+        execute('update gb.image set view=' . ($view + 1) . ' where id=' . $image['id']);
+        $image = getItem('select * from image where name="' . $_GET['image'] . '"');
 
         echo render('gallery/one', ['image' => $image]);
     } else {

@@ -16,7 +16,7 @@
     <? } ?>
 </head>
 <body>
-<?//= render('widgets/navbsr', [], false) ?>
+<?= render('widgets/navbar', [], false) ?>
 
 <div class="container">
     <div class="py-3">

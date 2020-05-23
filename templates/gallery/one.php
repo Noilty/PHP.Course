@@ -9,5 +9,6 @@ $image = $data['image'];
     <a class="btn btn-primary" href="/gallery.php">Назад в галерею</a>
 </div>
 <div class="row">
+    Просмотры: <?= $image['view'] ?>
     <img src="<?= $image['path'] . '/' . $image['name'] ?>" alt="<?= $image['name'] ?>" style="margin-top: 20px">
 </div>
