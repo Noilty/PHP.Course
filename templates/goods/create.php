@@ -1,6 +1,6 @@
 <?php
 ?>
-
+<h1>Create goods</h1>
 <form method="post" action="/goods.php?action=create">
     <label for="name">Название</label>
     <input name="name" id="name" type="text"/>
