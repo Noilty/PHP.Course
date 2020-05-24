@@ -16,3 +16,4 @@ require ROOT . '/engine/router.php'; // Маршрутизация
 require ROOT . '/engine/logger.php'; // Логирование
 require ROOT . '/engine/database.php'; // База данных
 require ROOT . '/engine/gallery.php'; // Галлерея
+require ROOT . '/engine/auth.php'; // Галлерея
