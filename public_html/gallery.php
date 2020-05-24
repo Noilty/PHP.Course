@@ -24,7 +24,7 @@ function routeOne() {
         $view = $image['view'];
         execute('update gb.image set view=' . ($view + 1) . ' where id=' . $image['id']);
         $image = getItem('select * from gb.image where name="' . $imageName . '"');
-        $comments = getItemArray('select * from gb.image_comment where image_id=' . $image['id']);
+        $comments = getItemArray('select * from gb.image_comment where image_id=' . $image['id'] . ' order by created_at desc');
 
         echo render('gallery/one', ['image' => $image, 'comments' => $comments]);
     } else {
