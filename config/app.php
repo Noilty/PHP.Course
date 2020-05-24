@@ -11,14 +11,15 @@ return [
 
         'assets' => [
             'css' => [
-                '/css/bootstrap.min.css',
+                'https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',
                 '/css/jquery.fancybox.min.css',
-                '/css/style.css'
+                '/css/style.css',
+                'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
             ],
             'js' => [
-                '/js/vendor/bootstrap.min.js',
-                '/js/vendor/jquery-3.5.1.min.js',
-                '/js/vendor/popper.min.js',
+                'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js',
+                'https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js',
                 '/js/vendor/jquery.fancybox.min.js',
                 '/js/app.js'
             ]
