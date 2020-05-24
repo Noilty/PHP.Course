@@ -3,7 +3,7 @@
 $images = $data['images'];
 ?>
 <h1>Gallery</h1>
-<p><a href="gallery.php?action=download" class="btn btn-success">Загрузить</a>
+<p><a href="gallery.php?action=download" class="btn btn-success">Загрузить</a></p>
 <div class="row">
 <? foreach ($images as $image) { ?>
     <div class="col-6">

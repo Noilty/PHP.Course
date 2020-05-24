@@ -9,14 +9,19 @@ function routeIndex() {
  * Демонстрация одного товара
  */
 function routeOne() {
-    echo render('goods/one');
+    $itemId = (string)htmlspecialchars(strip_tags($_GET['item']));
+    $item = getItem('select * from gb.goods where id="'.$itemId.'"');
+
+    echo render('goods/one', ['item' => $item]);
 }
 
 /**
  * Демонстрация всех товара
  */
 function routeAll() {
-    echo render('goods/all');
+    $items = getItemArray('select * from gb.goods');
+
+    echo render('goods/all', ['items' => $items]);
 }
 
 /**
