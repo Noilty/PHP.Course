@@ -1,6 +1,7 @@
 <?php
 /**
  * @var $categories
+ * @var $products
  */
 ?>
 <h1>Каталог товаров</h1>

@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var $categories
+ */
+?>
 <form method="post">
     <div class="form-group">
         <label for="item_name">Наименование</label>

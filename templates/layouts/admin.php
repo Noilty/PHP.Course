@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var $content
+ */
+?>
 <!DOCTYPE html>
 <html>
 <head>
