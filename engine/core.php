@@ -1,6 +1,8 @@
 <?php
 // Первоначальный запуск (сессия, константы, окружение)
 define('ROOT', dirname(__DIR__));
+define('ORDER_STATUS_READY', 1);
+define('ORDER_STATUS_NEW', 0);
 
 // ВКЛ показ ошибок
 ini_set('error_reporting', E_ALL);

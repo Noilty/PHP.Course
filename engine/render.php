@@ -59,4 +59,9 @@ function getTemplateContent(string $filePath, array $data) {
 
 /**
  * Функция для вывода JSON в ответ на AJAX-запрос
+ * @param $data
  */
+function renderJson($data) {
+    header('Content-type: application/json');
+    echo json_encode($data);
+}

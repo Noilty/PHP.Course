@@ -1,3 +1,5 @@
-<h1>404</h1>
+<h1>Error</h1>
 <?php
-echo 'Page 404';
+if (isset($text)) {
+    echo $text;
+}

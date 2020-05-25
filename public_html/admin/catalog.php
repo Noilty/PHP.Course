@@ -2,6 +2,8 @@
 require '../../engine/core.php';
 
 function routeIndex() {
+    onlyAdmin(); //Только для админа
+
     $categories = getItemArray("select * from category");
     $products = getItemArray("select * from product");
 
@@ -17,6 +19,8 @@ function routeIndex() {
 }
 
 function routeAddcategory() {
+    onlyAdmin(); //Только для админа
+
     if (isset($_POST['new_category'])) {
         $name = htmlspecialchars($_POST['cat_name']);
 
@@ -36,6 +40,8 @@ function routeAddcategory() {
 }
 
 function routeAddproduct() {
+    onlyAdmin(); //Только для админа
+
     $categories = getItemArray("select * from category");
 
     if (isset($_POST['new_product'])) {
