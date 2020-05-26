@@ -29,11 +29,24 @@ class Product
     }
 
     /**
+     * @return string
+     */
+    public function getInfo() {
+        $info = '<b>Изображение:</b> ' . $this->image . '<br />' . PHP_EOL .
+                '<b>Имя:</b> ' . $this->name . '<br />' . PHP_EOL .
+                '<b>Описание:</b> ' . $this->description . '<br />' . PHP_EOL .
+                '<b>Гарантия:</b> ' . $this->guarantee . '<br />' . PHP_EOL .
+                '<b>Страна-производитель:</b> ' . $this->producing_country . '<br />' . PHP_EOL;
+
+        return $info;
+    }
+
+    /**
      * @return mixed
      */
     public function getImage()
     {
-        return 'Изображение ' . $this->image;
+        return $this->image;
     }
 
     /**
@@ -49,7 +62,7 @@ class Product
      */
     public function getName()
     {
-        return 'Имя: ' . $this->name;
+        return $this->name;
     }
 
     /**
@@ -65,7 +78,7 @@ class Product
      */
     public function getDescription()
     {
-        return 'Описание: ' . $this->description;
+        return $this->description;
     }
 
     /**
@@ -81,7 +94,7 @@ class Product
      */
     public function getGuarantee()
     {
-        return 'Гарантия: ' . $this->guarantee;
+        return $this->guarantee;
     }
 
     /**
@@ -97,7 +110,7 @@ class Product
      */
     public function getProducingCountry()
     {
-        return 'Страна-производитель: ' . $this->producing_country;
+        return $this->producing_country;
     }
 
     /**

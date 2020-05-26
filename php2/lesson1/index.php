@@ -1,15 +1,15 @@
 <?php
 include 'Phone.php';
 
-$phone1 = new Product(
-    'Image phone 1',
-    'Name phone 1',
-    'Desc phone 1',
-    12,
-    'Китай'
+$product = new Product(
+    'Image product 1',
+    'Name product 1',
+    'Desc product 1',
+    97,
+    'Германия'
 );
 
-$phone2 = new Phone(
+$phone = new Phone(
     'Image phone 1',
     'Name phone 1',
     'Desc phone 1',
@@ -18,4 +18,6 @@ $phone2 = new Phone(
     2
 );
 
-echo $phone2->getCountSim();
+echo $product->getInfo();
+echo '<hr />';
+echo $phone->getInfo();

@@ -18,12 +18,19 @@ class Phone extends Product
         $this->setCountSim($count_sim);
     }
 
+    public function getInfo()
+    {
+        $item = parent::getInfo() . '<b>Количество SIM-карт: </b>' . $this->count_sim;
+
+        return $item;
+    }
+
     /**
      * @return mixed
      */
     public function getCountSim()
     {
-        return 'Количество SIM-карт: ' . $this->count_sim;
+        return $this->count_sim;
     }
 
     /**
