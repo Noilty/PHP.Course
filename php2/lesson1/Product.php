@@ -31,7 +31,8 @@ class Product
     /**
      * @return string
      */
-    public function getInfo() {
+    public function getInfo()
+    {
         $info = '<b>Изображение:</b> ' . $this->image . '<br />' . PHP_EOL .
                 '<b>Имя:</b> ' . $this->name . '<br />' . PHP_EOL .
                 '<b>Описание:</b> ' . $this->description . '<br />' . PHP_EOL .
