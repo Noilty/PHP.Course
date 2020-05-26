@@ -21,3 +21,18 @@ echo PHP_EOL;
 
 $b = test::single();
 echo $b->getValue();
+
+echo '<hr />';
+
+$dp = new DigitalProduct(3);
+echo $dp->profitCalc();
+
+echo '<hr />';
+
+$ppg = new PiecePhysicalGoods(3);
+echo $ppg->profitCalc();
+
+echo '<hr />';
+
+$gw = new GoodsWeight(3, 300);
+echo $gw->profitCalc();

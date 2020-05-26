@@ -6,5 +6,19 @@
 
 abstract class Base
 {
-    public abstract function setPrice();
+    const PROFIT = 10;
+
+    /**
+     * Финальная стоимость
+     *
+     * @return mixed
+     */
+    public abstract function totalCost();
+
+    /**
+     * Доход получаемый с продажи
+     *
+     * @return mixed
+     */
+    public abstract function profitCalc();
 }

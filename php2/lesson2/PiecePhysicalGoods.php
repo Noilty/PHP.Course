@@ -4,11 +4,20 @@
  * Class PiecePhysicalGoods / Штучный физический товар
  */
 
-class PiecePhysicalGoods extends Base
+class PiecePhysicalGoods extends DigitalProduct
 {
-    public function setPrice()
+    public function getPrice()
     {
-        // TODO: Implement setPrice() method.
-        echo 'Штучный физический товар';
+        return parent::PRICE * 2;
+    }
+
+    public function totalCost()
+    {
+        return $this->getPrice() * parent::getAmount();
+    }
+
+    public function profitCalc()
+    {
+        return $this->totalCost() / 100 * parent::PROFIT;
     }
 }
