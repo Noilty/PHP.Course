@@ -8,6 +8,10 @@ function route() {
     // Берем название функции из $_GET
     $action = (isset($_GET['action'])) ? $_GET['action'] : 'index';
 
+    $action = str_replace('-', ' ', $action);
+    $action = ucwords($action);
+    $action = str_replace(' ', '', $action);
+
     // Добавляем префикс route к Action => routAction()
     $action = 'route' . ucfirst($action);
 
