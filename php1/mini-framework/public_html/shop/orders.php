@@ -1,7 +1,8 @@
 <?php
 require '../../engine/core.php';
 
-function routeIndex() {
+function routeIndex()
+{
     onlyAuth(); // Для авторизированных пользователей
 
     $uid = $_SESSION['auth']['id'];

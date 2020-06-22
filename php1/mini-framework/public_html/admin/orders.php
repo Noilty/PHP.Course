@@ -4,7 +4,8 @@ require '../../engine/core.php';
 /**
  * Получаем все заказы
  */
-function routeIndex() {
+function routeIndex()
+{
     onlyAdmin(); //Только для админа
 
     $orders = getItemArray("select * from `order`");
@@ -23,7 +24,8 @@ function routeIndex() {
     );
 }
 
-function routeProcess() {
+function routeProcess()
+{
     onlyAdmin(); //Только для админа
 
     $id = $_POST['order_id'];
@@ -46,7 +48,8 @@ function routeProcess() {
 /**
  * Изменить статус заказа
  */
-function routeRemove() {
+function routeRemove()
+{
     onlyAdmin(); //Только для админа
 
     $id = $_POST['order_id'];

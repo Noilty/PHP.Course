@@ -4,7 +4,8 @@
  * Функция для автоматического запуска нужного действия
  * через $_GET параметр action
  */
-function route() {
+function route()
+{
     // Берем название функции из $_GET
     $action = (isset($_GET['action'])) ? $_GET['action'] : 'index';
 

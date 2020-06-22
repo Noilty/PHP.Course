@@ -4,7 +4,8 @@ require '../../engine/core.php';
 /**
  * Показываем всех пользователей
  */
-function routeIndex() {
+function routeIndex()
+{
     onlyAdmin(); //Только для админа
 
     $users = getItemArray('select * from users');
@@ -15,7 +16,8 @@ function routeIndex() {
 /**
  * Показать одного пользователя
  */
-function routeView() {
+function routeView()
+{
     onlyAdmin(); //Только для админа
 
     if (!isset($_GET['id'])) {

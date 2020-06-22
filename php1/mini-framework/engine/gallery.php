@@ -1,5 +1,6 @@
 <?php
-function fillDataBase() {
+function fillDataBase()
+{
     global $config;
     $images = scandir($config['app']['imagesPath']);
 
@@ -28,6 +29,7 @@ function fillDataBase() {
 
 /**
  * Функция загрузки изображения в папку
+ *
  * @param string $tmpFileName
  * @param string $userFileName
  * @return bool

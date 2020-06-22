@@ -12,10 +12,12 @@ $connection = mysqli_connect(
 
 /**
  * Получение одной строки из базы данных по SQL запросу
+ *
  * @param string $sql
  * @return array|null
  */
-function getItem(string $sql) {
+function getItem(string $sql)
+{
     global $connection;
 //    $sql = mysqli_real_escape_string($connection, $sql);
     $result = mysqli_query($connection, $sql);
@@ -31,10 +33,12 @@ function getItem(string $sql) {
 
 /**
  * Получение нескольких строк из базы данных по SQL запросу
+ *
  * @param string $sql
  * @return array
  */
-function getItemArray(string $sql) {
+function getItemArray(string $sql)
+{
     global $connection;
     $result = mysqli_query($connection, $sql);
 
@@ -54,10 +58,12 @@ function getItemArray(string $sql) {
 
 /**
  * Простое выполнение SQL запроса к базе данных
+ *
  * @param string $sql
  * @return bool|mysqli_result
  */
-function execute(string $sql) {
+function execute(string $sql)
+{
     global $connection;
     $result = mysqli_query($connection, $sql);
 
@@ -71,9 +77,11 @@ function execute(string $sql) {
 
 /**
  * Возврат ID последней операции вставки
+ *
  * @return int
  */
-function lastInsertedId() {
+function lastInsertedId()
+{
     global $connection;
     $result = mysqli_insert_id($connection);
 

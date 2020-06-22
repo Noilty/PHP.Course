@@ -1,14 +1,16 @@
 <?php
 require_once '../engine/core.php';
 
-function routeIndex() {
+function routeIndex()
+{
     echo render('goods/index');
 }
 
 /**
  * Демонстрация одного товара
  */
-function routeOne() {
+function routeOne()
+{
     $itemId = (string)htmlspecialchars(strip_tags($_GET['item']));
     $item = getItem('select * from gb.goods where id="'.$itemId.'"');
 
@@ -18,7 +20,8 @@ function routeOne() {
 /**
  * Демонстрация всех товара
  */
-function routeAll() {
+function routeAll()
+{
     $items = getItemArray('select * from gb.goods');
 
     echo render('goods/all', ['items' => $items]);
@@ -27,7 +30,8 @@ function routeAll() {
 /**
  * Создание нового товара
  */
-function routeCreate() {
+function routeCreate()
+{
     if (!empty($_POST)) {
         // Создаем товар
         $price = (float)$_POST['price'];
@@ -46,14 +50,16 @@ function routeCreate() {
 /**
  * Изменение товара
  */
-function routeUpdate() {
+function routeUpdate()
+{
     echo render('goods/update');
 }
 
 /**
  * Удаление товара
  */
-function routeDelete() {
+function routeDelete()
+{
     if (!empty($_GET['id'])) {
         execute('delete from gb.goods where id=' . $_GET['id']);
         header("Location: goods.php");

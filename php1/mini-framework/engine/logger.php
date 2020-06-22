@@ -5,8 +5,12 @@
 
 /**
  * Функция для логирования сообщений в директорию logs
+ *
+ * @param $message
+ * @param string $type
  */
-function systemLog($message, string $type = 'info') {
+function systemLog($message, string $type = 'info')
+{
     global $config;
 
     // Приводим тип сообщения в нижний регистр

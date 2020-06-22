@@ -5,7 +5,8 @@ require '../../engine/core.php';
  * Отображение содержимого корзины
  */
 
-function routeIndex() {
+function routeIndex()
+{
     $orderItems = [];
 
     // грузим элементы из сессии, если есть (с подгрузкой названия из БД)
@@ -29,7 +30,8 @@ function routeIndex() {
 /**
  * Добавление товара в корзину
  */
-function routeAdditem() {
+function routeAdditem()
+{
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
         $quantity = $_POST['quantity'];
@@ -90,7 +92,8 @@ function routeAdditem() {
 /**
  * Оформление заказа в БД
  */
-function routeOrder() {
+function routeOrder()
+{
     if (!isLoggedUser()) {
         header('Location: /');
     } else {

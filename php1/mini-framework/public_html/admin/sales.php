@@ -1,7 +1,8 @@
 <?php
 require '../../engine/core.php';
 
-function routeIndex() {
+function routeIndex()
+{
     onlyAdmin(); //Только для админа
 
     $sales = getItemArray("select * from sales");
@@ -11,7 +12,8 @@ function routeIndex() {
     ], true, 'admin');
 }
 
-function routeAdd() {
+function routeAdd()
+{
     onlyAdmin(); //Только для админа
 
     if (isset($_POST['new_sale'])) {

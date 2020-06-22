@@ -5,13 +5,15 @@
 
 /**
  * Генерация шаблона страниц для отображения
+ *
  * @param string $template
  * @param array $data
  * @param bool $withLayout
  * @param string $layout
  * @return mixed
  */
-function render(string $template, array $data = [], bool $withLayout = true, string $layout = 'main') {
+function render(string $template, array $data = [], bool $withLayout = true, string $layout = 'main')
+{
     global $config;
 
     // Путь к шаблонам
@@ -38,11 +40,13 @@ function render(string $template, array $data = [], bool $withLayout = true, str
 
 /**
  * Чтение шаблона из буфера вывода
+ *
  * @param string $filePath
  * @param array $data
  * @return false|string HTML-код шаблона
  */
-function getTemplateContent(string $filePath, array $data) {
+function getTemplateContent(string $filePath, array $data)
+{
     // Открываем буфер вывода
     ob_start();
 
@@ -59,9 +63,11 @@ function getTemplateContent(string $filePath, array $data) {
 
 /**
  * Функция для вывода JSON в ответ на AJAX-запрос
+ *
  * @param $data
  */
-function renderJson($data) {
+function renderJson($data)
+{
     header('Content-type: application/json');
     echo json_encode($data);
 }

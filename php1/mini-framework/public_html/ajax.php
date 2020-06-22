@@ -1,12 +1,14 @@
 <?php
 require '../engine/core.php';
 
-function routeIndex() {
+function routeIndex()
+{
     echo render('ajax/index');
 
 }
 
-function routeJsonitem() {
+function routeJsonitem()
+{
     $item = [
         'login' => 'Artur',
         'email' => 'test@example.com',
@@ -19,11 +21,13 @@ function routeJsonitem() {
     renderJson($item);
 }
 
-function routeInput() {
+function routeInput()
+{
     renderJson($_POST);
 }
 
-function routeObject() {
+function routeObject()
+{
     renderJson($_POST['user']);
 }
 

@@ -4,7 +4,8 @@ require '../../engine/core.php';
 /**
  * Выводим информацию о товаре
  */
-function routeIndex() {
+function routeIndex()
+{
     $id = $_GET['id'];
 
     $item = getItem(

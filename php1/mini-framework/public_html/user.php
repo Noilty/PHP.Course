@@ -1,13 +1,15 @@
 <?php
 require '../engine/core.php';
 
-function routeIndex() {
+function routeIndex()
+{
     // перехват стандартного действия
     routeLogin();
 }
 
 // страница с формой входа
-function routeLogin() {
+function routeLogin()
+{
     // редирект если уже авторизован
     if (isLoggedUser()) {
         header("Location: /user.php?action=home");
@@ -35,15 +37,18 @@ function routeLogin() {
     echo render('user/login');
 }
 
-function routeLogout() {
+function routeLogout()
+{
     logoutUser();
 }
 
-function routeHome() {
+function routeHome()
+{
     echo render('user/home');
 }
 
-function routeRegister() {
+function routeRegister()
+{
     // грузим из POST
     if (isset($_POST['reg_user'])) {
         $login = $_POST['login'];

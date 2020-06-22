@@ -4,7 +4,8 @@ require '../../engine/core.php';
 /**
  * Выводим список категорий
  */
-function routeIndex() {
+function routeIndex()
+{
     $categories = getItemArray("
     SELECT c.id AS id_category, c.name AS name_category, count(*) AS count_item 
     FROM product AS p 
@@ -20,7 +21,8 @@ function routeIndex() {
 /**
  * Выводим список товаров в категории
  */
-function routeView() {
+function routeView()
+{
     $id = $_GET['id'];
 
     $prods = getItemArray(

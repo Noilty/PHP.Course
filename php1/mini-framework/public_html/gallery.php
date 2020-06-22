@@ -4,7 +4,8 @@ require_once '../engine/core.php';
 /**
  * Все изображения
  */
-function routeIndex() {
+function routeIndex()
+{
     fillDataBase();
     $images = getItemArray('select name, view from gb.image order by view desc');
 
@@ -14,7 +15,8 @@ function routeIndex() {
 /**
  * Одно изоброжение
  */
-function routeOne() {
+function routeOne()
+{
     //xss
     $imageName = (string)htmlspecialchars(strip_tags($_GET['image']));
     $image = getItem('select * from gb.image where name="'.$imageName.'"');
@@ -32,7 +34,8 @@ function routeOne() {
     }
 }
 
-function routeFill() {
+function routeFill()
+{
     fillDataBase();
     echo render('site/success');
 }
@@ -64,7 +67,8 @@ function routeDownload()
 /**
  * Создания комментария к фоточке
  */
-function routeCreateComment() {
+function routeCreateComment()
+{
     if (!empty($_POST)) {
         $post = $_POST;
         $image = getItem('select * from gb.image where id=' . $post['image_id']);
@@ -87,7 +91,8 @@ function routeCreateComment() {
 /**
  * Страницы ошибки
  */
-function routeError() {
+function routeError()
+{
     echo render('site/error');
 }
 

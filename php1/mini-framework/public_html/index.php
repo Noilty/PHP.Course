@@ -4,7 +4,8 @@ require_once '../engine/core.php';
 /**
  * Главная страница
  */
-function routeIndex() {
+function routeIndex()
+{
 //    systemLog('Подключаем логирование');
 //    $image = getItemArray('select * from gb.image order by id desc');
 //    var_dump($image);
@@ -14,7 +15,8 @@ function routeIndex() {
 /**
  * Страницы ошибки
  */
-function routeError() {
+function routeError()
+{
 //    systemLog('Подключаем логирование', 'error');
     echo render('site/error');
 }
