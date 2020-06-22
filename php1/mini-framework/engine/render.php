@@ -16,8 +16,8 @@ function render(string $template, array $data = [], bool $withLayout = true, str
 
     // Путь к шаблонам
     $templates = [
-        'layout' => "{$config['app']['templatesPath']}/layouts/{$layout}.php",
-        'page' => "{$config['app']['templatesPath']}/{$template}.php"
+        'layout' => "{$config['app']['templatesPath']}/" . DEFAULT_TEMPLATE . "/layouts/{$layout}.php",
+        'page' => "{$config['app']['templatesPath']}/" . DEFAULT_TEMPLATE . "/pages/{$template}.php"
     ];
 
     // Загружаем настройки приложения из глобального доступа
