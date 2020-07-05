@@ -11,10 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@index')->name('home');
+
+//Route::get('/admin', 'Admin\IndexController@index')->name('admin');
+
+Route::group([
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
+    'as' => 'admin.'
+], function () {
+    Route::get('/', 'IndexController@index')->name('admin');
+    Route::get('/test', 'IndexController@test')->name('test');
 });
 
-Route::get('/hello', function () {
-    return view('index');
-});
+Route::get('/news', 'NewsController@news')->name('news');
+Route::get('/news/{id}', 'NewsController@newsOne')->name('newsOne');
+
