@@ -5,15 +5,17 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css')  }}">
 </head>
 <body>
-<h1>Hello, World!</h1>
-<div class="alert alert-primary" role="alert">
-    Это основное уведомление — check it out!
-</div>
+<div class="container">
+    <h1>Меню</h1>
+    @include('menu.main')
+    @include('menu.admin')
 
-<style src="{{ asset('js/app.js')  }}"></style>
+    @yield('content')
+    <style src="{{ asset('js/app.js')  }}"></style>
+</div>
 </body>
 </html>

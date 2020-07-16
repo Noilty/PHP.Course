@@ -2,63 +2,63 @@
 
 namespace App\Http\Controllers;
 
+use App\News;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    private $news = [
-        [
-            'id' => 1,
-            'title' => 'title news 1',
-            'text' => 'text news 1',
-        ],
-        [
-            'id' => 2,
-            'title' => 'title news 2',
-            'text' => 'text news 2',
-        ]
-    ];
-
     public function news()
     {
-        $html = <<<php1
-<h2>News</h2>
-php1;
-        foreach ($this->news as $news) {
-            $html .= <<<php2
-<a href="/news/{$news['id']}">{$news['title']}</a><br />
-php2;
-        }
-
-        return $html;
+        return view('news/all', [
+            'news' => News::$news
+        ]);
     }
 
     public function newsOne($id)
     {
-        $html = <<<php1
-<h1>Menu</h1>
-php1;
+        $page404 = (array_key_exists($id, News::$news)) ? true : false;
 
-        $news = $this->getNewsId($id);
-
-        if (!empty($id)) {
-            $html .= <<<php1
-<h1>{$news['title']}</h1>
-<p>{$news['text']}</p>
-php1;
-
-            return $html;
+        if ($page404) {
+            return view('news/one', [
+                'news' => News::$news[$id]
+            ]);
+        } else {
+            return redirect(route('news/all'));
         }
-
-        return redirect(route('news'));
     }
 
-    private function getNewsId($id)
+    public function categories()
     {
-        foreach ($this->news as $news) {
-            if ($news['id'] == $id) {
-                return $news;
-            }
+        return view('news/category/all', [
+            'category' => News::$category
+        ]);
+    }
+
+    public function categoryOne($id)
+    {
+        $news = [];
+
+        foreach (News::$category as $item) {
+            if ($item['name'] == $id) $id = $item['id'];
         }
+
+        if (array_key_exists($id, News::$category)) {
+            $name = News::$category[$id]['category'];
+
+            foreach (News::$news as $item) {
+                if ($item['category_id'] == $id) {
+                    $news[] = $item;
+                }
+            }
+
+            return view('news/category/one', [
+                'news' => $news,
+                'category' => $name
+            ]);
+        } else {
+            return redirect(route('news.categories'));
+        }
+
+
     }
 }

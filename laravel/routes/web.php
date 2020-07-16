@@ -24,6 +24,19 @@ Route::group([
     Route::get('/test', 'IndexController@test')->name('test');
 });
 
-Route::get('/news', 'NewsController@news')->name('news');
-Route::get('/news/{id}', 'NewsController@newsOne')->name('newsOne');
+Route::group([
+    'prefix' => 'news',
+    'as' => 'news.'
+], function () {
+    Route::get('/all', 'NewsController@news')->name('all');
+    Route::get('/category/all', 'NewsController@categories')->name('categories');
+    Route::get('/{id}', 'NewsController@newsOne')->name('one');
+    Route::get('/category/{id}', 'NewsController@categoryOne')->name('categoryOne');
+});
 
+
+
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
