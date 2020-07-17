@@ -58,7 +58,5 @@ class NewsController extends Controller
         } else {
             return redirect(route('news.categories'));
         }
-
-
     }
 }
