@@ -43,3 +43,7 @@ Route::group([
     Route::get('/categories/{id}','NewsController@newsCategoriesId')->name('allCategory');
 
 });
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

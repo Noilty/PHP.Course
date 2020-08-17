@@ -6,7 +6,7 @@
     <h1>Категории</h1>
     @forelse($categories as $category)
         <div>
-            <a href="{{ route('news.allCategory', $category['id']) }}">{{ $category['title'] }}</a>
+            <a href="{{ route('news.allCategory', $category['title_translit']) }}">{{ $category['title'] }}</a>
         </div>
     @empty
         <p>Нет категорий</p>

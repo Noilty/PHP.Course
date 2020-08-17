@@ -36,6 +36,10 @@ class NewsController extends Controller
     {
         $news = [];
 
+        foreach (News::$category as $item) {
+            if ($item['title_translit'] == $id) $id = $item['id'];
+        }
+
         if (array_key_exists($id, News::$category)) {
             $name = News::$category[$id]['title'];
             foreach (News::$news as $item) {
