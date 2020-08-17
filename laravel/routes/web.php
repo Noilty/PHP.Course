@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+//Route::resource('News', 'NewsController@index');
+
+Route::get('/','HomeController@index')->name('home');
+Route::get('/admin','Admin\IndexController@index')->name('admin');
+
+Route::get('/test1','Admin\IndexController@test1')->name('test1');
+Route::get('/test2','Admin\IndexController@test2')->name('test2');
+
+Route::get('/news','NewsController@news')->name('news');
+Route::get('/news/{nId}','NewsController@newsOne');
