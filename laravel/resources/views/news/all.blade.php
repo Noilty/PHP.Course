@@ -8,7 +8,7 @@
         <div>
             <h2>{{ $item['title'] }}</h2>
             @if(!$item['isPrivate'])
-                <a href="{{ route('newsOne', $item['id']) }}">Подробнее</a>
+                <a href="{{ route('news.one', $item['id']) }}">Подробнее</a>
             @endif
         </div>
     @empty

@@ -33,6 +33,13 @@ Route::group([
 //Route::get('/test1','Admin\IndexController@test1')->name('test1');
 //Route::get('/test2','Admin\IndexController@test2')->name('test2');
 
-Route::get('/news','NewsController@newsAll')->name('newsAll');
-Route::get('/news/categories','NewsController@newsCategories')->name('newsCategories');
-Route::get('/news/{id}','NewsController@newsOne')->name('newsOne');
+Route::group([
+    'prefix' => 'news',
+    'as' => 'news.'
+], function () {
+    Route::get('/','NewsController@newsAll')->name('all');
+    Route::get('/categories','NewsController@newsCategories')->name('categories');
+    Route::get('/{id}','NewsController@newsOne')->name('one');
+    Route::get('/categories/{id}','NewsController@newsCategoriesId')->name('allCategory');
+
+});

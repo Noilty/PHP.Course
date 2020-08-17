@@ -21,12 +21,36 @@ class NewsController extends Controller
                 'news' => News::$news[$id]
             ]);
         } else {
-            return redirect(route('newsAll'));
+            return redirect(route('news.all'));
         }
     }
 
     public function newsCategories()
     {
-        return view('news/category');
+        return view('news/category/all', [
+            'categories' => News::$category
+        ]);
+    }
+
+    public function newsCategoriesId($id)
+    {
+        $news = [];
+
+        if (array_key_exists($id, News::$category)) {
+            $name = News::$category[$id]['title'];
+            foreach (News::$news as $item) {
+                if ($item['category_id'] == $id) {
+                    $news[] = $item;
+                }
+            }
+
+            return view('news/category/one', [
+                'news' => $news,
+                'category' => $name
+            ]);
+        } else {
+            return redirect(route('news.categories'));
+        }
+
     }
 }
