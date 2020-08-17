@@ -24,7 +24,7 @@ Route::group([
     'namespace' => 'Admin',
     'as' => 'admin.'
 ], function () {
-    Route::get('/','IndexController@index')->name('admin');
+    Route::get('/','IndexController@index')->name('index');
     Route::get('/test1','IndexController@test1')->name('test1');
     Route::get('/test2','IndexController@test2')->name('test2');
 });
@@ -33,5 +33,6 @@ Route::group([
 //Route::get('/test1','Admin\IndexController@test1')->name('test1');
 //Route::get('/test2','Admin\IndexController@test2')->name('test2');
 
-Route::get('/news','NewsController@news')->name('news');
-Route::get('/news/{nId}','NewsController@newsOne');
+Route::get('/news','NewsController@newsAll')->name('newsAll');
+Route::get('/news/categories','NewsController@newsCategories')->name('newsCategories');
+Route::get('/news/{id}','NewsController@newsOne')->name('newsOne');

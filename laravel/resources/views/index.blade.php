@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Главная')
+
 @section('content')
-    Добро пожаловать!
+    <h1>Добро пожаловать!</h1>
 @endsection

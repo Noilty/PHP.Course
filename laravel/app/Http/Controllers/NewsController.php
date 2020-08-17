@@ -2,58 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\News;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    private $news = [
-        1 => [
-            'id' => 1,
-            'title' => 'News 1',
-            'text' => 'News text 1'
-        ],
-        2 => [
-            'id' => 2,
-            'title' => 'News 2',
-            'text' => 'News text 2'
-        ]
-    ];
-
-    public function news()
+    public function newsAll()
     {
-        $html = <<<php
-<h1>News</h1>
-php;
-foreach ($this->news as $news) {
-    $html .= <<<php
-<a href="/news/{$news['id']}">{$news['title']}</a><br>
-php;
-
-}
-        return $html;
+        return view('news/all', [
+            'news' => News::$news
+        ]);
     }
 
-    public function newsOne($nId)
+    public function newsOne($id)
     {
-        $html = <<<php
-<h1>News $nId</h1>
-php;
-        $news = $this->getNewsId($nId);
-
-        if (!empty($news)) {
-            $html .= $news['text'];
-            return $html;
+        if (array_key_exists($id, News::$news)) {
+            return view('news/one', [
+                'news' => News::$news[$id]
+            ]);
         } else {
-            return redirect(route('news'));
+            return redirect(route('newsAll'));
         }
     }
 
-    private function getNewsId($nId)
+    public function newsCategories()
     {
-        foreach ($this->news as $news) {
-            if ($news['id'] == $nId) {
-                return $news;
-            }
-        }
+        return view('news/category');
     }
 }
