@@ -14,7 +14,7 @@ class IndexController extends Controller
 
     public  function test1()
     {
-        return 'Hello, Test';
+        return 'Hello, Test1';
     }
 
     public  function test2()
