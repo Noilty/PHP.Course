@@ -25,6 +25,10 @@
                     <a href="{{ route('admin.add.news') }}"
                        class="nav-link{{ request()->routeIs('admin.add.news')?' active':'' }}">Добавить новость</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.add.news2') }}"
+                       class="nav-link{{ request()->routeIs('admin.add.news2')?' active':'' }}">Добавить новость (Построитель форм)</a>
+                </li>
             </ul>
         </div>
     </div>

@@ -18,6 +18,11 @@ class IndexController extends Controller
         return view('admin/news/add', ['categories' => News::$category]);
     }
 
+    public function addNews2()
+    {
+        return view('admin/news/add2', ['categories' => News::$category]);
+    }
+
     public  function test1()
     {
         return view('admin/test1');
