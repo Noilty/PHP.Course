@@ -1,17 +1,23 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('title', 'Новость')
 
 @section('content')
-    <h1>Новости</h1>
-    @forelse($news as $item)
-        <div>
-            <h2>{{ $item['title'] }}</h2>
-            @if(!$item['isPrivate'])
-                <a href="{{ route('news.one', $item['id']) }}">Подробнее</a>
-            @endif
+    <div class="container">
+        <h1>Новости</h1>
+        <div class="row justify-content-center">
+            @forelse($news as $item)
+                <div class="col-md-12 card">
+                    <div class="card-body">
+                        <h2>{{ $item['title'] }}</h2>
+                        @if(!$item['isPrivate'])
+                            <a href="{{ route('news.one', $item['id']) }}">Подробнее</a>
+                        @endif
+                    </div>
+                </div>
+            @empty
+                <p>Нет новостей</p>
+            @endforelse
         </div>
-    @empty
-        <p>Нет новостей</p>
-    @endforelse
+    </div>
 @endsection
