@@ -15,11 +15,15 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a href="{{ route('admin.test1') }}"
-                       class="nav-link{{ request()->routeIs('admin.test1')?' active':'' }}">Тест 1</a>
+                       class="nav-link{{ request()->routeIs('admin.test1')?' active':'' }}">download.txt</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.test2') }}"
-                       class="nav-link{{ request()->routeIs('admin.test2')?' active':'' }}">Тест 2</a>
+                       class="nav-link{{ request()->routeIs('admin.test2')?' active':'' }}">download.json</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.test3') }}"
+                       class="nav-link{{ request()->routeIs('admin.test3')?' active':'' }}">download.jpeg</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.add.news') }}"

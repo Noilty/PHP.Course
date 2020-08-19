@@ -13,8 +13,12 @@ class IndexController extends Controller
         return view('admin/index');
     }
 
-    public function addNews()
+    public function addNews(Request $request)
     {
+        if ($request->isMethod('post')) {
+            $request->flash(); //Запоминает введеные данные с формы
+            return redirect()->route('admin.add.news');
+        }
         return view('admin/news/add', ['categories' => News::$category]);
     }
 
@@ -23,13 +27,24 @@ class IndexController extends Controller
         return view('admin/news/add2', ['categories' => News::$category]);
     }
 
-    public  function test1()
+    public  function test1(Request $request)
     {
-        return view('admin/test1');
+        $content = view('admin.test1')->render();
+        return response($content)
+            ->header('Content-type', 'application/text')
+            ->header('Content-Length', mb_strlen($content))
+            ->header('Content-Disposition', 'attachment; filename="download.txt"');
     }
 
     public  function test2()
     {
-        return view('admin/test2');
+        return response()->json(News::$news)
+            ->header('Content-Disposition', 'attachment; filename="download.json"')
+            ->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+    }
+
+    public  function test3()
+    {
+        return response()->download('images/photo.jpg');
     }
 }

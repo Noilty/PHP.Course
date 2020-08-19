@@ -6,16 +6,22 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form>
+                <form action="{{ route('admin.add.news') }}" method="post">
+                    @csrf
                     <div class="form-group">
                         <label for="newsTitle">Название новости</label>
-                        <input name="title" type="text" id="newsTitle" class="form-control">
+                        <input name="title"
+                               type="text"
+                               id="newsTitle"
+                               class="form-control"
+                               value="{{ old('title') }}">
                     </div>
                     <div class="form-group">
                         <label for="newsCategory">Категория новости</label>
-                        <select class="form-control" id="newsCategory">
+                        <select name="category" class="form-control" id="newsCategory">
                             @forelse($categories as $item)
-                                <option>{{ $item['title'] }}</option>
+                                <option value="{{ $item['id'] }}"
+                                        @if ($item['id'] == old('category')) selected @endif>{{ $item['title'] }}</option>
                             @empty
                             <h2>Нет категории</h2>
                             @endforelse
@@ -23,10 +29,15 @@
                     </div>
                     <div class="form-group">
                         <label for="newsText">Категория новости</label>
-                        <textarea class="form-control" rows="5" id="newsText"></textarea>
+                        <textarea name="text" class="form-control" rows="5" id="newsText">{{ old('text') }}</textarea>
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" value="1" id="newsPrivate">
+                        <input @if(old('idPrivate') == 1) checked @endif
+                               name="idPrivate"
+                               type="checkbox"
+                               class="form-check-input"
+                               value="1"
+                               id="newsPrivate">
                         <label for="newsPrivate">Приватная новость?</label>
                     </div>
                     <div class="form-group">

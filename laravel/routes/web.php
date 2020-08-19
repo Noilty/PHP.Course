@@ -25,10 +25,11 @@ Route::group([
     'as' => 'admin.'
 ], function () {
     Route::get('/','IndexController@index')->name('index');
-    Route::get('/add','IndexController@addNews')->name('add.news');
-    Route::get('/add2','IndexController@addNews2')->name('add.news2');
+    Route::match(['post', 'get'], '/news/add','IndexController@addNews')->name('add.news');
+    Route::get('/news/add2','IndexController@addNews2')->name('add.news2');
     Route::get('/test1','IndexController@test1')->name('test1');
     Route::get('/test2','IndexController@test2')->name('test2');
+    Route::get('/test3','IndexController@test3')->name('test3');
 });
 
 //Route::get('/admin','Admin\IndexController@index')->name('admin');
