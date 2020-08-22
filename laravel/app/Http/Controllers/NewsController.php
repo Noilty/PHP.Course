@@ -4,21 +4,30 @@ namespace App\Http\Controllers;
 
 use App\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
     public function newsAll()
     {
+        //$news = DB::select('select * from news');
+        $news = DB::table('news')->get();
+
         return view('news/all', [
-            'news' => News::getNews()
+            'news' => $news
         ]);
     }
 
     public function newsOne($id)
     {
-        if (array_key_exists($id, News::getNews())) {
+        /*$news = DB::select('select * from news where id=:id', [
+            'id' => $id
+        ]);*/
+        $news = DB::table('news')->find($id);
+
+        if (!empty($news)) {
             return view('news/one', [
-                'news' => News::getNews()[$id]
+                'news' => $news
             ]);
         } else {
             return redirect(route('news.all'));
