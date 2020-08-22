@@ -19,6 +19,10 @@
 
 Route::get('/','HomeController@index')->name('home');
 
+Route::get('/vue', function () {
+    return view('vue');
+})->name('vue');
+
 Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin',

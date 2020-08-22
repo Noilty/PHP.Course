@@ -10,15 +10,15 @@ class NewsController extends Controller
     public function newsAll()
     {
         return view('news/all', [
-            'news' => News::$news
+            'news' => News::getNews()
         ]);
     }
 
     public function newsOne($id)
     {
-        if (array_key_exists($id, News::$news)) {
+        if (array_key_exists($id, News::getNews())) {
             return view('news/one', [
-                'news' => News::$news[$id]
+                'news' => News::getNews()[$id]
             ]);
         } else {
             return redirect(route('news.all'));
@@ -28,7 +28,7 @@ class NewsController extends Controller
     public function newsCategories()
     {
         return view('news/category/all', [
-            'categories' => News::$category
+            'categories' => News::getCategories()
         ]);
     }
 
@@ -36,13 +36,13 @@ class NewsController extends Controller
     {
         $news = [];
 
-        foreach (News::$category as $item) {
+        foreach (News::getCategories() as $item) {
             if ($item['title_translit'] == $id) $id = $item['id'];
         }
 
-        if (array_key_exists($id, News::$category)) {
-            $name = News::$category[$id]['title'];
-            foreach (News::$news as $item) {
+        if (array_key_exists($id, News::getCategories())) {
+            $name = News::getCategories()[$id]['title'];
+            foreach (News::getNews() as $item) {
                 if ($item['category_id'] == $id) {
                     $news[] = $item;
                 }

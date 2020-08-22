@@ -32,6 +32,10 @@
                     <a href="{{ route('admin.index') }}"
                        class="nav-link{{ request()->routeIs('admin.index')?' active':'' }}">Админка</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('vue') }}"
+                       class="nav-link{{ request()->routeIs('vue')?' active':'' }}">VUE</a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->

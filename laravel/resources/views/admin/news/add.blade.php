@@ -6,7 +6,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form action="{{ route('admin.add.news') }}" method="post">
+                <form enctype="multipart/form-data"
+                      action="{{ route('admin.add.news') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="newsTitle">Название новости</label>
@@ -31,6 +32,11 @@
                         <label for="newsText">Категория новости</label>
                         <textarea name="text" class="form-control" rows="5" id="newsText">{{ old('text') }}</textarea>
                     </div>
+
+                    <div class="form-group">
+                        <input type="file" name="image">
+                    </div>
+
                     <div class="form-check">
                         <input @if(old('idPrivate') == 1) checked @endif
                                name="idPrivate"

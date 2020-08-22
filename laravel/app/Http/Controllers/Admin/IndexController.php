@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class IndexController extends Controller
 {
@@ -17,14 +18,36 @@ class IndexController extends Controller
     {
         if ($request->isMethod('post')) {
             $request->flash(); //Запоминает введеные данные с формы
-            return redirect()->route('admin.add.news');
+
+            $url = null;
+            if ($request->file('image')) {
+                $path = Storage::putFile('public', $request->file('image'));
+                $url = Storage::url($path);
+            }
+
+            $data = News::getNews();
+            $id = count($data) +1;
+            $data[$id] = [
+                'id' => $id,
+                'title' => $request->title,
+                'category_id' => $request->category,
+                'text' => $request->text,
+                'image' => $url,
+                'isPrivate' => isset($request->isPrivate)
+            ];
+
+            // Сохранения данных в файл
+            Storage::disk('local')->put('news.json', json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+            return redirect()->route('news.all')
+                ->with('success', 'Новость успешно добавлена');
         }
-        return view('admin/news/add', ['categories' => News::$category]);
+        return view('admin/news/add', ['categories' => News::getCategories()]);
     }
 
     public function addNews2()
     {
-        return view('admin/news/add2', ['categories' => News::$category]);
+        return view('admin/news/add2', ['categories' => News::getCategories()]);
     }
 
     public  function test1(Request $request)
@@ -38,7 +61,7 @@ class IndexController extends Controller
 
     public  function test2()
     {
-        return response()->json(News::$news)
+        return response()->json(News::getNews())
             ->header('Content-Disposition', 'attachment; filename="download.json"')
             ->setEncodingOptions(JSON_UNESCAPED_UNICODE);
     }

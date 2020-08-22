@@ -10,6 +10,8 @@
                 <div class="col-md-12 card">
                     <div class="card-body">
                         <h2>{{ $item['title'] }}</h2>
+                        <div class="card-img"
+                             style="background-image: url('{{ $item['image'] ?? asset('/images/photo.jpg') }}')"></div>
                         @if(!$item['isPrivate'])
                             <a href="{{ route('news.one', $item['id']) }}">Подробнее</a>
                         @endif

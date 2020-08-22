@@ -12,6 +12,7 @@ class News extends Model
             'title' => 'News 1',
             'text' => 'News text 1',
             'category_id' => '1',
+            'image' => null,
             'isPrivate' => false
         ],
         2 => [
@@ -19,6 +20,7 @@ class News extends Model
             'title' => 'News 2',
             'text' => 'News text 2',
             'category_id' => '2',
+            'image' => null,
             'isPrivate' => false
         ],
         3 => [
@@ -26,6 +28,7 @@ class News extends Model
             'title' => 'News 3',
             'text' => 'News text 3',
             'category_id' => '1',
+            'image' => null,
             'isPrivate' => false
         ],
         4 => [
@@ -33,6 +36,7 @@ class News extends Model
             'title' => 'News 4',
             'text' => 'News text 4',
             'category_id' => '1',
+            'image' => null,
             'isPrivate' => false
         ]
     ];
@@ -49,4 +53,14 @@ class News extends Model
             'title_translit' => 'politika'
         ],
     ];
+
+    public static function getNews():array
+    {
+        return json_decode(\Storage::disk('local')->get('news.json'), true);
+    }
+
+    public static function getCategories():array
+    {
+        return json_decode(\Storage::disk('local')->get('category.json'), true);
+    }
 }
