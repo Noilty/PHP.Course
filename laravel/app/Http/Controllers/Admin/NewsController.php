@@ -14,17 +14,39 @@ class NewsController extends Controller
     {
         $news = News::query()->paginate(5);
 
-        return view('admin/index', ['news' => $news]);
+        return view('admin.index', ['news' => $news]);
     }
 
     public function updateNews(Request $request, News $news)
     {
+        return view('admin.news.add', [
+            'news' => $news,
+            'categories' => []
+        ]);
+    }
 
+    public function saveNews(Request $request, News $news)
+    {
+        if ($request->isMethod('post')) {
+            if ($request->file('image')) {
+                $path = $request->file('image')->store('public');
+                $news->image = Storage::url($path);
+            }
+
+            $news->fill($request->all());
+            $news->save();
+
+            return redirect()->route('admin.index')
+                ->with('success', 'Новость успешно изменена');
+        }
     }
 
     public function deleteNews(Request $request, News $news)
     {
+        $news->delete();
 
+        return redirect()->route('admin.index')
+            ->with('success', 'Новость успешно удалена');
     }
 
     public function addNews(Request $request, News $news)
@@ -32,26 +54,24 @@ class NewsController extends Controller
         if ($request->isMethod('post')) {
             $request->flash(); //Запоминает введеные данные с формы
 
+            $news = new News();
+
             $url = null;
             if ($request->file('image')) {
-                $path = Storage::putFile('public', $request->file('image'));
-                $url = Storage::url($path);
+                //$path = Storage::putFile('public', $request->file('image'));
+                $path = $request->file('image')->store('public');
+                $news->image = Storage::url($path);
             }
 
-            $data = [
-                'title' => $request->title,
-                //'category_id' => $request->category,
-                'text' => $request->text,
-                'image' => $url,
-                'isPrivate' => isset($request->isPrivate)
-            ];
-
-            DB::table('news')->insert($data);
+            // Сохранение в базу данных
+            $news->fill($request->all());
+            $news->save();
 
             return redirect()->route('news.all')
                 ->with('success', 'Новость успешно добавлена');
         }
-        return view('admin/news/add', [
+
+        return view('admin.news.add', [
             'news' => $news,
             'categories' => []
         ]);
