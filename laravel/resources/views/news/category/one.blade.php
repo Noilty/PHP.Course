@@ -18,6 +18,7 @@
             @empty
                 <p>Нет новостей в категории</p>
             @endforelse
+            {{ $news->links() }}
         </div>
     </div>
 @endsection

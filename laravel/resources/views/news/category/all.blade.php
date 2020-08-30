@@ -9,7 +9,7 @@
             @forelse($categories as $category)
                 <div class="col-md-12 card">
                     <div class="card-body">
-                        <a href="{{ route('news.allCategory', $category['title_translit']) }}">{{ $category['title'] }}</a>
+                        <a href="{{ route('news.allCategory', $category->name) }}">{{ $category->category }}</a>
                     </div>
                 </div>
             @empty

@@ -20,10 +20,10 @@
                     </div>
                     <div class="form-group">
                         <label for="newsCategory">Категория новости</label>
-                        <select name="category" class="form-control" id="newsCategory">
+                        <select name="category_id" class="form-control" id="newsCategory">
                             @forelse($categories as $item)
                                 <option value="{{ $item['id'] }}"
-                                        @if ($item['id'] == old('category')) selected @endif>{{ $item['title'] }}</option>
+                                        @if ($item['id'] == old('category')) selected @endif>{{ $item['category'] }}</option>
                             @empty
                             <h2>Нет категории</h2>
                             @endforelse

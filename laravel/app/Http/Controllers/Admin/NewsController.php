@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,14 +15,19 @@ class NewsController extends Controller
     {
         $news = News::query()->paginate(5);
 
-        return view('admin.index', ['news' => $news]);
+        return view('admin.index', [
+            'news' => $news
+        ]);
     }
 
     public function updateNews(Request $request, News $news)
     {
         return view('admin.news.add', [
             'news' => $news,
-            'categories' => []
+            'categories' => Category::query()->select([
+                'id',
+                'category'
+            ])->get()
         ]);
     }
 
@@ -73,7 +79,10 @@ class NewsController extends Controller
 
         return view('admin.news.add', [
             'news' => $news,
-            'categories' => []
+            'categories' => Category::query()->select([
+                'id',
+                'category'
+            ])->get()
         ]);
     }
 }

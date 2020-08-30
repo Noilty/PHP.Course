@@ -22,4 +22,9 @@ class News extends Model
         'text',
         'isPrivate'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id')->first();
+    }
 }

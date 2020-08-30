@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -31,33 +32,34 @@ class NewsController extends Controller
     public function newsCategories()
     {
         return view('news/category/all', [
-            'categories' => News::getCategories()
+            'categories' => Category::query()->select([
+                'id',
+                'category',
+                'name'
+            ])->get()
         ]);
     }
 
     public function newsCategoriesId($id)
     {
-        $news = [];
+        $cat = Category::query()
+            ->select(['id', 'category'])
+            ->where('name', $id)
+            ->get();
 
-        foreach (News::getCategories() as $item) {
-            if ($item['title_translit'] == $id) $id = $item['id'];
-        }
+        /*$news = News::query()
+            ->where('category_id', $cat[0]->id)
+            ->paginate(5);*/
 
-        if (array_key_exists($id, News::getCategories())) {
-            $name = News::getCategories()[$id]['title'];
-            foreach (News::getNews() as $item) {
-                if ($item['category_id'] == $id) {
-                    $news[] = $item;
-                }
-            }
+        // Получаем данные через модель Category по связи таблиц
+        $news = Category::query()
+            ->find($cat[0]->id)
+            ->news()
+            ->paginate(5);
 
-            return view('news/category/one', [
-                'news' => $news,
-                'category' => $name
-            ]);
-        } else {
-            return redirect(route('news.categories'));
-        }
-
+        return view('news/category/one', [
+            'news' => $news,
+            'category' => $cat[0]->category
+        ]);
     }
 }
