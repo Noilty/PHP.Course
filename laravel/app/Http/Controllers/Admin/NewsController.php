@@ -40,6 +40,7 @@ class NewsController extends Controller
             }
 
             $news->fill($request->all());
+
             $news->save();
 
             return redirect()->route('admin.index')

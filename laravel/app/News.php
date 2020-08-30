@@ -20,7 +20,8 @@ class News extends Model
     protected $fillable = [
         'title',
         'text',
-        'isPrivate'
+        'isPrivate',
+        'category_id' // Не изменялась категория (теперь гуд)
     ];
 
     public function category()
