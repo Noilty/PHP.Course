@@ -24,11 +24,12 @@ class CreateNewsTable extends Migration
                 ->comment('Приватная новость')
                 ->default(false);
             $table->text('image')
+                ->nullable(true)
                 ->comment('URL картинки новости');
-            $table->timestamp('created_at')
+            /*$table->timestamp('created_at')
                 ->useCurrent();
             $table->timestamp('updated_at')
-                ->useCurrent();
+                ->useCurrent();*/
         });
     }
 

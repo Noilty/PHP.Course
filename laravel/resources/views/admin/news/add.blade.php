@@ -7,7 +7,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <form enctype="multipart/form-data"
-                      action="{{ route('admin.add.news') }}" method="post">
+                      action="@if (!$news->id) {{ route('admin.add.news') }} @else {{ route('admin.save.news') }} @endif"
+                      method="post">
                     @csrf
                     <div class="form-group">
                         <label for="newsTitle">Название новости</label>
@@ -47,7 +48,7 @@
                         <label for="newsPrivate">Приватная новость?</label>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-outline-primary w-100" value="Добавить новость" id="newsAdd">
+                        @if ($news->id) Изменить новость @else Добавить новость @endif
                     </div>
                 </form>
             </div>

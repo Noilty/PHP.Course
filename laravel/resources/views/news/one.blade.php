@@ -9,6 +9,8 @@
             @if(!$news->isPrivate)
                 <div class="col-md-12 card">
                     <div class="card-body">
+                        <div class="card-img"
+                             style="background-image: url('{{ $item->image ?? asset('/images/photo.jpg') }}')"></div>
                         <h2>{{ $news->title }}</h2>
                         <p>{{ $news->text }}</p>
                     </div>

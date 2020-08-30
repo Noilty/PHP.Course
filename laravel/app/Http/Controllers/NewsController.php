@@ -11,27 +11,21 @@ class NewsController extends Controller
     public function newsAll()
     {
         //$news = DB::select('select * from news');
-        $news = DB::table('news')->get();
+        //$news = DB::table('news')->get();
+        $news = News::query()
+            ->where('isPrivate', false)
+            ->paginate(5);
 
         return view('news/all', [
             'news' => $news
         ]);
     }
 
-    public function newsOne($id)
+    public function newsOne(News $news)
     {
-        /*$news = DB::select('select * from news where id=:id', [
-            'id' => $id
-        ]);*/
-        $news = DB::table('news')->find($id);
-
-        if (!empty($news)) {
-            return view('news/one', [
-                'news' => $news
-            ]);
-        } else {
-            return redirect(route('news.all'));
-        }
+        return view('news/one', [
+            'news' => $news
+        ]);
     }
 
     public function newsCategories()

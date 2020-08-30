@@ -11,9 +11,9 @@
                     <div class="card-body">
                         <h2>{{ $item->title }}</h2>
                         <div class="card-img"
-                             style="background-image: url('{{ (!empty($item->image))? $item->image : asset('/images/photo.jpg') }}')"></div>
+                             style="background-image: url('{{ $item->image ?? asset('/images/photo.jpg') }}')"></div>
                         @if(!$item->isPrivate)
-                            <a href="{{ route('news.one', $item->id) }}">Подробнее</a>
+                            <a href="{{ route('news.one', $item) }}">Подробнее</a>
                         @endif
                     </div>
                 </div>
@@ -21,5 +21,6 @@
                 <p>Нет новостей</p>
             @endforelse
         </div>
+        {{ $news->links() }}
     </div>
 @endsection

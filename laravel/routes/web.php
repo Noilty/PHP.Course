@@ -28,8 +28,11 @@ Route::group([
     'namespace' => 'Admin',
     'as' => 'admin.'
 ], function () {
-    Route::get('/','IndexController@index')->name('index');
-    Route::match(['post', 'get'], '/news/add','IndexController@addNews')->name('add.news');
+    Route::get('/','NewsController@index')->name('index');
+    Route::match(['post', 'get'], '/news/add','NewsController@addNews')->name('add.news');
+    Route::get('/news/{news}/update','NewsController@updateNews')->name('update.news');
+    Route::post('/news/{news}/save','NewsController@saveNews')->name('save.news');
+    Route::get('/news/{news}/delete','NewsController@deleteNews')->name('delete.news');
     Route::get('/news/add2','IndexController@addNews2')->name('add.news2');
     Route::get('/test1','IndexController@test1')->name('test1');
     Route::get('/test2','IndexController@test2')->name('test2');
@@ -46,7 +49,7 @@ Route::group([
 ], function () {
     Route::get('/','NewsController@newsAll')->name('all');
     Route::get('/categories','NewsController@newsCategories')->name('categories');
-    Route::get('/{id}','NewsController@newsOne')->name('one');
+    Route::get('/{news}','NewsController@newsOne')->name('one');
     Route::get('/categories/{id}','NewsController@newsCategoriesId')->name('allCategory');
 
 });
