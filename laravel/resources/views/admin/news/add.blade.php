@@ -12,6 +12,13 @@
                     @csrf
                     <div class="form-group">
                         <label for="newsTitle">Название новости</label>
+                        @if ($errors->has('title'))
+                            <div class="alert alert-danger" role="alert">
+                                @foreach($errors->get('title') as $error)
+                                    {{ $error }}
+                                @endforeach
+                            </div>
+                        @endif
                         <input name="title"
                                type="text"
                                id="newsTitle"
@@ -20,6 +27,13 @@
                     </div>
                     <div class="form-group">
                         <label for="newsCategory">Категория новости</label>
+                        @if ($errors->has('category_id'))
+                            <div class="alert alert-danger" role="alert">
+                                @foreach($errors->get('category_id') as $error)
+                                    {{ $error }}
+                                @endforeach
+                            </div>
+                        @endif
                         <select name="category_id" class="form-control" id="newsCategory">
                             @forelse($categories as $item)
                                 <option value="{{ $item['id'] }}"
@@ -30,7 +44,14 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="newsText">Категория новости</label>
+                        <label for="newsText">Текст новости</label>
+                        @if ($errors->has('text'))
+                            <div class="alert alert-danger" role="alert">
+                                @foreach($errors->get('text') as $error)
+                                    {{ $error }}
+                                @endforeach
+                            </div>
+                        @endif
                         <textarea name="text"
                                   class="form-control"
                                   rows="5"
@@ -38,6 +59,13 @@
                     </div>
 
                     <div class="form-group">
+                        @if ($errors->has('image'))
+                            <div class="alert alert-danger" role="alert">
+                                @foreach($errors->get('image') as $error)
+                                    {{ $error }}
+                                @endforeach
+                            </div>
+                        @endif
                         <input type="file" name="image">
                     </div>
 

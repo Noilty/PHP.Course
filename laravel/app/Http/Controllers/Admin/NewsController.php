@@ -34,17 +34,26 @@ class NewsController extends Controller
     public function saveNews(Request $request, News $news)
     {
         if ($request->isMethod('post')) {
+            $this->validate($request, News::rules(), [], News::attributeNames());
+
             if ($request->file('image')) {
                 $path = $request->file('image')->store('public');
                 $news->image = Storage::url($path);
             }
 
-            $news->fill($request->all());
+            $result = $news->fill($request->all())->save();
 
-            $news->save();
+            if ($result) {
+                return redirect()
+                    ->route('admin.index')
+                    ->with('success', 'Новость успешно изменена');
+            } else {
+                $request->flash();
 
-            return redirect()->route('admin.index')
-                ->with('success', 'Новость успешно изменена');
+                return redirect()
+                    ->route('admin.add.news')
+                    ->with('error', 'Новость не изменена');
+            }
         }
     }
 
@@ -56,23 +65,22 @@ class NewsController extends Controller
             ->with('success', 'Новость успешно удалена');
     }
 
-    public function addNews(Request $request, News $news)
+    public function addNews(Request $request)
     {
+        $news = new News();
         if ($request->isMethod('post')) {
             $request->flash(); //Запоминает введеные данные с формы
 
-            $news = new News();
+            $this->validate($request, News::rules(), [], News::attributeNames());
 
             $url = null;
             if ($request->file('image')) {
-                //$path = Storage::putFile('public', $request->file('image'));
                 $path = $request->file('image')->store('public');
                 $news->image = Storage::url($path);
             }
 
             // Сохранение в базу данных
-            $news->fill($request->all());
-            $news->save();
+            $news->fill($request->all())->save();
 
             return redirect()->route('news.all')
                 ->with('success', 'Новость успешно добавлена');

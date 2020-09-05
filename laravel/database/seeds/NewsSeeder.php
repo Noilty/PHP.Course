@@ -11,10 +11,11 @@ class NewsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('news')->insert($this->getData());
+        factory(\App\News::class, 10)->create();
+        //DB::table('news')->insert($this->getData());
     }
 
-    private function getData()
+    /*private function getData()
     {
         $faker = Faker\Factory::create('ru_RU');
         $data = [];
@@ -28,5 +29,5 @@ class NewsSeeder extends Seeder
         }
 
         return $data;
-    }
+    }*/
 }
