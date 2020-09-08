@@ -23,7 +23,7 @@
                                type="text"
                                id="newsTitle"
                                class="form-control"
-                               value="{{ $news->title ?? old('title') }}">
+                               value="{{ old('title') ?? $news->title ?? '' }}">
                     </div>
                     <div class="form-group">
                         <label for="newsCategory">Категория новости</label>
@@ -81,7 +81,7 @@
                     <div class="form-group">
                         <input type="submit"
                                class="btn btn-outline-primary w-100"
-                               value="<? if ($news->id) { ?>Изменить новость<? } else { ?>Добавить новость<? } ?>"
+                               value="@if($news->id){{ __('Изменить новость') }}@else{{ __('Добавить новость') }}@endif"
                                id="newsAdd">
                     </div>
                 </form>

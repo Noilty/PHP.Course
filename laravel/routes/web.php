@@ -28,6 +28,8 @@ Route::group([
     'namespace' => 'Admin',
     'as' => 'admin.'
 ], function () {
+    Route::match(['post','get'], '/profile', 'ProfileController@update')
+    ->name('profile.update');
     Route::get('/','NewsController@index')->name('index');
     Route::match(['post', 'get'], '/news/add','NewsController@addNews')->name('add.news');
     Route::get('/news/{news}/update','NewsController@updateNews')->name('update.news');

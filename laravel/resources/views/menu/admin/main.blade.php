@@ -33,6 +33,10 @@
                     <a href="{{ route('admin.add.news2') }}"
                        class="nav-link{{ request()->routeIs('admin.add.news2')?' active':'' }}">Добавить новость (Построитель форм)</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.profile.update') }}"
+                       class="nav-link{{ request()->routeIs('admin.profile.update')?' active':'' }}">Изменить профиль</a>
+                </li>
             </ul>
         </div>
     </div>

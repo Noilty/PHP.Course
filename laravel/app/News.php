@@ -38,7 +38,8 @@ class News extends Model
             'title' => ['required','min:5','max:30', new Jedi()],
             'text' => 'required|max:1000',
             'category_id' => "required|exists:{$tableCategory},id",
-            'image' => 'mimes:jpeg,bmp,png|max:1000'
+            'image' => 'mimes:jpeg,bmp,png|max:1000',
+            'isPrivate' => 'integer|boolean|min:0|max:0|sometimes|in:on'
         ];
     }
 
