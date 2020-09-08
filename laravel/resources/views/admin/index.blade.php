@@ -10,13 +10,14 @@
                 <div class="col-md-12 card">
                     <div class="card-body">
                         <h2>{{ $item->title }}</h2>
-                        <form action="{{ route('admin.news.destroy', $item) }}">
+                        <form action="{{ route('admin.news.destroy', $item) }}"
+                              method="post">
                             <a href="{{ route('admin.update.news', $item) }}">
                                 <button type="button"
                                         class="btn btn-secondary">Edit</button>
                             </a>
-                            @csrf
                             @method('DELETE')
+                            @csrf
                             <button type="submit"
                                     class="btn btn-danger">delete</button>
                         </form>
