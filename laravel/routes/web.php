@@ -26,7 +26,8 @@ Route::get('/vue', function () {
 Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin',
-    'as' => 'admin.'
+    'as' => 'admin.',
+    'middleware' => ['auth', 'is_admin']
 ], function () {
     Route::match(['post','get'], '/profile', 'ProfileController@update')
     ->name('profile.update');
