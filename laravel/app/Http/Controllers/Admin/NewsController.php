@@ -57,7 +57,7 @@ class NewsController extends Controller
         }
     }
 
-    public function deleteNews(Request $request, News $news)
+    public function destroy(Request $request, News $news)
     {
         $news->delete();
 

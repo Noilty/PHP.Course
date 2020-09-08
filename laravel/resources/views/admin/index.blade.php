@@ -10,14 +10,16 @@
                 <div class="col-md-12 card">
                     <div class="card-body">
                         <h2>{{ $item->title }}</h2>
-                        <a href="{{ route('admin.update.news', $item) }}">
-                            <button type="button"
-                                    class="btn btn-secondary">Edit</button>
-                        </a>
-                        <a href="{{ route('admin.delete.news', $item) }}">
-                            <button type="button"
+                        <form action="{{ route('admin.news.destroy', $item) }}">
+                            <a href="{{ route('admin.update.news', $item) }}">
+                                <button type="button"
+                                        class="btn btn-secondary">Edit</button>
+                            </a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
                                     class="btn btn-danger">delete</button>
-                        </a>
+                        </form>
                     </div>
                 </div>
             @empty
